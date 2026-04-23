@@ -858,13 +858,19 @@ section {
 }
 .integ-icon {
   width: 44px; height: 44px;
-  background: var(--blue-soft);
-  color: var(--blue-dark);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 18px;
-  font-family: 'Geist', sans-serif;
+  overflow: hidden;
 }
+.integ-icon svg { width: 28px; height: 28px; display: block; }
+.integ-icon.brand-wordpress { background: #21759B; }
+.integ-icon.brand-shopify   { background: #95BF47; }
+.integ-icon.brand-webflow   { background: #146EF5; }
+.integ-icon.brand-wix       { background: #0C0C0D; }
+.integ-icon.brand-notion    { background: #FFFFFF; border: 1px solid var(--stroke); }
+.integ-icon.brand-hubspot   { background: #FF7A59; }
+.integ-icon.brand-ghost     { background: #15171A; }
+.integ-icon.brand-nextjs    { background: #000000; }
 .integ-name {
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
@@ -1663,14 +1669,82 @@ section {
     </div>
 
     <div class="integ-grid reveal">
-      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">WordPress</span></div>
-      <div class="integ-card"><div class="integ-icon">S</div><span class="integ-name">Shopify</span></div>
-      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">Webflow</span></div>
-      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">Wix</span></div>
-      <div class="integ-card"><div class="integ-icon">N</div><span class="integ-name">Notion</span></div>
-      <div class="integ-card"><div class="integ-icon">H</div><span class="integ-name">HubSpot</span></div>
-      <div class="integ-card"><div class="integ-icon">G</div><span class="integ-name">Ghost</span></div>
-      <div class="integ-card"><div class="integ-icon">N</div><span class="integ-name">Next.js</span></div>
+      <div class="integ-card">
+        <div class="integ-icon brand-wordpress" aria-label="WordPress logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M16 2.5C8.55 2.5 2.5 8.55 2.5 16S8.55 29.5 16 29.5 29.5 23.45 29.5 16 23.45 2.5 16 2.5zm0 1.4c1.74 0 3.4.36 4.92 1.01-.05 0-.1-.01-.15-.01-.95 0-1.62.83-1.62 1.72 0 .8.46 1.47.95 2.27.37.65.8 1.47.8 2.67 0 .83-.32 1.79-.74 3.13l-.97 3.24-3.51-10.43c.59-.03 1.12-.09 1.12-.09.52-.06.46-.83-.06-.8 0 0-1.58.12-2.6.12-.96 0-2.57-.12-2.57-.12-.52-.03-.59.77-.06.8 0 0 .49.06 1.02.09l1.5 4.11-2.11 6.32-3.5-10.43c.59-.03 1.12-.09 1.12-.09.52-.06.46-.83-.06-.8 0 0-1.58.12-2.6.12-.18 0-.4-.01-.62-.01A12.59 12.59 0 0116 3.9zM4.61 11.65l5.18 14.18a12.6 12.6 0 01-5.18-14.18zm12.05 4.4l3.32 9.07c.02.05.05.1.07.14-1.13.4-2.34.62-3.6.62-1.07 0-2.1-.16-3.07-.45l3.28-9.38zm6.75-4.07c.45 1.13.71 2.55.71 4.02 0 2.74-1.02 4.84-2.27 7.37l-3.04-8.55zm-7.4 1.61c.83-.04 1.59-.13 1.59-.13.74-.09.66-1.18-.09-1.13 0 0-2.24.18-3.69.18-1.36 0-3.65-.18-3.65-.18-.74-.05-.83 1.07-.09 1.13 0 0 .69.09 1.46.13l2.15 5.9-3.03 9.07-5.04-14.97c.83-.04 1.59-.13 1.59-.13.74-.09.66-1.18-.09-1.13 0 0-2.24.18-3.69.18-.27 0-.59-.01-.92-.02A12.5 12.5 0 0116 3.5"/>
+          </svg>
+        </div>
+        <span class="integ-name">WordPress</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-shopify" aria-label="Shopify logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M23.7 8.1c0-.1-.1-.2-.2-.2s-1.9-.1-1.9-.1-1.5-1.5-1.7-1.6c-.2-.2-.5-.1-.6-.1l-.8.2c-.5-1.4-1.3-2.7-2.9-2.7h-.1c-.4-.6-1-.8-1.5-.8-3.7.1-5.5 4.7-6.1 7l-2.6.8c-.8.3-.8.3-.9 1L4 24.6l13.8 2.6 7.5-1.6S23.7 8.2 23.7 8.1zM16.3 6.2l-1.4.4v-.3c0-.9-.1-1.7-.3-2.3.9.1 1.4 1.1 1.7 2.2zm-2.7-2.1c.2.5.4 1.2.4 2.2v.1l-2.8.9c.5-2.1 1.6-3.1 2.4-3.2zm-1.1-1c.2 0 .3.1.5.2-1.1.5-2.2 1.8-2.7 4.4l-2.2.7c.6-2.2 2.2-5.3 4.4-5.3z"/>
+            <path d="M23.5 7.9c-.1 0-1.9-.1-1.9-.1s-1.5-1.5-1.7-1.6l-.4-.1-1 21.1 7.5-1.6S23.6 8 23.5 7.9z"/>
+            <path d="M16.7 12l-.9 2.7s-.8-.4-1.8-.4c-1.4 0-1.5.9-1.5 1.1 0 1.2 3.2 1.7 3.2 4.6 0 2.3-1.4 3.7-3.4 3.7-2.4 0-3.6-1.5-3.6-1.5l.6-2.1s1.3 1.1 2.4 1.1c.7 0 1-.6 1-1 0-1.6-2.6-1.7-2.6-4.3 0-2.2 1.6-4.4 4.8-4.4 1.4-.1 1.8.5 1.8.5z" fill="#15171a"/>
+          </svg>
+        </div>
+        <span class="integ-name">Shopify</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-webflow" aria-label="Webflow logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M27 9 19.6 23.5h-3l-3.1-9.5-3.2 9.5h-3L0 9h3.6l3.1 9.5L9.7 9h3l3 9.5L18.7 9H27z"/>
+          </svg>
+        </div>
+        <span class="integ-name">Webflow</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-wix" aria-label="Wix logo">
+          <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M11.4 9.3c-.6 0-1.2.2-1.5.7-.3.5-.5 1.1-.5 2 0 .9-.5 1.4-1.3 1.4-.7 0-1.3-.5-1.3-1.4 0-1.2.4-2.4 1.3-3.2C9 8 10.1 7.6 11.4 7.6h.1l3.4 14.6 4.3-14h2.6l4.3 14L29.5 7.6h2.6l-4 16.8h-3.6L20.1 10 15.7 24.4h-3.6L8.4 9.3h3zM39.5 7.6h2.7v16.8h-2.7zM55.6 16l5.7 8.4h-3.4l-4-6.2-4 6.2h-3.4l5.7-8.4-5.5-8.4h3.4l3.8 6 3.8-6h3.4z"/>
+          </svg>
+        </div>
+        <span class="integ-name">Wix</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-notion" aria-label="Notion logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#000" d="M6.02 4.42 19 3.5c1.6-.13 2-.04 3 .69l4.14 2.92c.69.5.92.64.92 1.19v16.13c0 1-.37 1.6-1.65 1.69l-15.07.92c-.97.05-1.43-.09-1.93-.74L5.27 22.4c-.55-.74-.78-1.28-.78-1.93V6.02c0-.83.36-1.51 1.53-1.6z"/>
+            <path fill="#fff" d="M19 3.5 6.02 4.42c-1.17.09-1.53.77-1.53 1.6v14.45c0 .65.23 1.19.78 1.93l4.14 5.9c.5.65.96.79 1.93.74l15.07-.92c1.28-.09 1.65-.69 1.65-1.69V8.3c0-.51-.2-.66-.79-1.09L22 4.19c-.95-.65-1.36-.79-3-.69zM10.94 7.83c-1.23.08-1.51.1-2.21-.47L6.95 5.94c-.18-.18-.09-.41.37-.46l12.5-.91c1.05-.09 1.6.27 2.01.59l2.14 1.55c.09.05.32.32.05.32l-12.92.78zm-1.43 17.7V11.86c0-.6.18-.87.74-.92l14.83-.87c.51-.05.74.27.74.87v13.6c0 .6-.09 1.1-.92 1.14l-14.18.83c-.83.05-1.21-.23-1.21-.97zm14.04-12.93c.09.41 0 .83-.41.88l-.69.14v10.07c-.59.32-1.14.5-1.6.5-.74 0-.92-.23-1.47-.92l-4.51-7.07v6.84l1.42.32s0 .83-1.15.83l-3.18.18c-.09-.18 0-.65.32-.74l.83-.23V12.78l-1.15-.09c-.09-.41.14-1 .78-1.05l3.41-.23 4.7 7.18v-6.34l-1.19-.14c-.09-.5.27-.87.74-.92z"/>
+          </svg>
+        </div>
+        <span class="integ-name">Notion</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-hubspot" aria-label="HubSpot logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M22.4 13.6V10c.7-.3 1.2-1 1.2-1.8v-.1c0-1.1-.9-2-2-2h-.1c-1.1 0-2 .9-2 2v.1c0 .8.5 1.5 1.2 1.8v3.6c-1.1.2-2.1.6-3 1.3l-7.9-6.2c.1-.2.1-.4.1-.7C9.9 6.7 8.6 5.5 7 5.5S4.1 6.7 4.1 8.3 5.4 11 7 11c.5 0 1-.1 1.4-.4l7.8 6c-1.4 2.1-1.4 4.8 0 6.9l-2.4 2.4c-.2-.1-.4-.1-.6-.1-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2 0-.2 0-.4-.1-.6l2.4-2.4c2.7 2 6.5 1.5 8.6-1.2 2-2.7 1.5-6.5-1.2-8.6-.7-.5-1.7-.9-2.7-1.1zm-.9 9c-1.6 0-3-1.3-3-3s1.3-3 3-3c1.6 0 3 1.3 3 3s-1.4 3-3 3z"/>
+          </svg>
+        </div>
+        <span class="integ-name">HubSpot</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-ghost" aria-label="Ghost logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+            <path d="M3 6h11v5H3V6zm15 0h11v5H18V6zM3 13.5h26v5H3v-5zM3 21h11v5H3v-5zm15 0h11v5H18v-5z"/>
+          </svg>
+        </div>
+        <span class="integ-name">Ghost</span>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-icon brand-nextjs" aria-label="Next.js logo">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="14" fill="#000"/>
+            <path fill="#fff" d="M21.4 22.4 12.5 11v11h-1.5V10h1.9l8.9 11.4V10h1.5v12.4z"/>
+            <path fill="#fff" d="M19.5 18v-8h1.5v10z"/>
+          </svg>
+        </div>
+        <span class="integ-name">Next.js</span>
+      </div>
     </div>
   </div>
 </section>
