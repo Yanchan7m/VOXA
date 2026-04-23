@@ -277,6 +277,15 @@ section {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+.mascot .blink {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: blinkEye 5s infinite;
+}
+@keyframes blinkEye {
+  0%, 93%, 100% { transform: scaleY(1); }
+  95%, 98% { transform: scaleY(0.1); }
+}
 
 /* Bubbles */
 .bubble {
@@ -1156,7 +1165,7 @@ section {
       <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="100" cy="20" r="10" fill="none" stroke="#2563EB" stroke-width="7"/>
         <path d="M 96 30 L 104 30 L 112 55 L 88 55 Z" fill="#2563EB"/>
-        <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="13"/>
+        <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="19"/>
         <circle cx="73" cy="135" r="11" fill="#2563EB"/>
         <circle cx="127" cy="135" r="11" fill="#2563EB"/>
         <ellipse cx="100" cy="177" rx="19" ry="7" fill="#2563EB"/>
@@ -1197,10 +1206,10 @@ section {
           <circle cx="100" cy="20" r="10" fill="none" stroke="#2563EB" stroke-width="7"/>
           <path d="M 96 30 L 104 30 L 112 55 L 88 55 Z" fill="#2563EB"/>
           <!-- Tête -->
-          <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="13"/>
+          <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="19"/>
           <!-- Yeux -->
-          <circle cx="73" cy="135" r="11" fill="#2563EB"/>
-          <circle cx="127" cy="135" r="11" fill="#2563EB"/>
+          <circle class="blink" cx="73" cy="135" r="11" fill="#2563EB"/>
+          <circle class="blink" cx="127" cy="135" r="11" fill="#2563EB"/>
           <!-- Bouche -->
           <ellipse cx="100" cy="177" rx="19" ry="7" fill="#2563EB"/>
         </svg>
@@ -1758,7 +1767,7 @@ section {
           <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="100" cy="20" r="10" fill="none" stroke="#2563EB" stroke-width="7"/>
             <path d="M 96 30 L 104 30 L 112 55 L 88 55 Z" fill="#2563EB"/>
-            <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="13"/>
+            <circle cx="100" cy="140" r="85" fill="none" stroke="#2563EB" stroke-width="19"/>
             <circle cx="73" cy="135" r="11" fill="#2563EB"/>
             <circle cx="127" cy="135" r="11" fill="#2563EB"/>
             <ellipse cx="100" cy="177" rx="19" ry="7" fill="#2563EB"/>
