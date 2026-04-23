@@ -928,10 +928,31 @@ section {
 }
 
 /* ===== TESTIMONIALS ===== */
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.testi-viewport {
+  --testi-gap: 24px;
+  --testi-card-w: calc((min(100vw, 1200px) - 64px - 2 * var(--testi-gap)) / 3);
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.testi-track {
+  display: flex;
+  gap: var(--testi-gap);
+  width: max-content;
+  animation: testi-marquee 50s linear infinite;
+}
+.testi-viewport:hover .testi-track { animation-play-state: paused; }
+.testi-track > .testi-card {
+  width: var(--testi-card-w);
+  flex-shrink: 0;
+}
+@keyframes testi-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-6 * (var(--testi-card-w) + var(--testi-gap)))); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .testi-track { animation: none; }
 }
 .testi-card {
   background: var(--white);
@@ -1198,7 +1219,7 @@ section {
   .features-grid { grid-template-columns: 1fr; }
   .geo-grid { grid-template-columns: 1fr; gap: 40px; }
   .integ-grid { grid-template-columns: repeat(4, 1fr); }
-  .testi-grid { grid-template-columns: 1fr; }
+  .testi-viewport { --testi-card-w: calc((100vw - 48px - var(--testi-gap)) / 2); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .nav-links { display: none; }
 }
@@ -1208,6 +1229,7 @@ section {
   section { padding: 70px 0; }
   .compare-table { font-size: 13px; }
   .compare-table th, .compare-table td { padding: 12px 14px; }
+  .testi-viewport { --testi-card-w: calc(100vw - 80px); }
   .cta-band { padding: 60px 24px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
@@ -1824,8 +1846,9 @@ section {
       <h2 data-i18n="testi.h2">Ils remontent déjà dans les IA.</h2>
     </div>
 
-    <div class="testi-grid">
-      <div class="testi-card reveal">
+    <div class="testi-viewport reveal">
+     <div class="testi-track">
+      <div class="testi-card">
         <blockquote data-i18n="testi1.q">"Au bout de 3 semaines, ChatGPT a commencé à citer notre boutique quand on lui demandait des conseils thé. On a doublé le CA en 2 mois."</blockquote>
         <div class="testi-author">
           <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Clémence R." loading="lazy"></div>
@@ -1836,7 +1859,7 @@ section {
         </div>
       </div>
 
-      <div class="testi-card reveal">
+      <div class="testi-card">
         <blockquote data-i18n="testi2.q">"On payait 4K/mois une agence SEO qui ne comprenait pas le GEO. Voxa fait les deux pour 10× moins. On a coupé l'agence."</blockquote>
         <div class="testi-author">
           <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas B." loading="lazy"></div>
@@ -1847,7 +1870,7 @@ section {
         </div>
       </div>
 
-      <div class="testi-card reveal">
+      <div class="testi-card">
         <blockquote data-i18n="testi3.q">"Je suis solo founder. Voxa publie un article par jour pendant que je code. Premier lead qualifié venu de Perplexity au bout de 17 jours."</blockquote>
         <div class="testi-author">
           <div class="avatar">ML</div>
@@ -1858,7 +1881,7 @@ section {
         </div>
       </div>
 
-      <div class="testi-card reveal">
+      <div class="testi-card">
         <blockquote data-i18n="testi4.q">"Première citation Perplexity au bout de 5 semaines, sur une requête où on n'aurait jamais pu trust un SEO classique. Le ROI est mesurable, c'est rare dans le contenu."</blockquote>
         <div class="testi-author">
           <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah V." loading="lazy"></div>
@@ -1869,7 +1892,7 @@ section {
         </div>
       </div>
 
-      <div class="testi-card reveal">
+      <div class="testi-card">
         <blockquote data-i18n="testi5.q">"Je validais 5 sujets par semaine en 10 minutes depuis le dashboard. Aujourd'hui je laisse l'autopilote tourner et je check les citations IA une fois par mois."</blockquote>
         <div class="testi-author">
           <div class="avatar">AM</div>
@@ -1880,7 +1903,7 @@ section {
         </div>
       </div>
 
-      <div class="testi-card reveal">
+      <div class="testi-card">
         <blockquote data-i18n="testi6.q">"Le différenciateur c'est la qualité éditoriale. Les articles ne sentent pas l'IA générique, ils sont structurés comme des papiers de fond avec data et sources."</blockquote>
         <div class="testi-author">
           <div class="avatar"><img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Léa C." loading="lazy"></div>
@@ -1890,6 +1913,69 @@ section {
           </div>
         </div>
       </div>
+
+      <!-- Duplicate set for seamless marquee loop -->
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi1.q">"Au bout de 3 semaines, ChatGPT a commencé à citer notre boutique quand on lui demandait des conseils thé. On a doublé le CA en 2 mois."</blockquote>
+        <div class="testi-author">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" loading="lazy"></div>
+          <div>
+            <div class="testi-name">Clémence R.</div>
+            <div class="testi-role" data-i18n="testi1.role">Fondatrice, e-commerce thé</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi2.q">"On payait 4K/mois une agence SEO qui ne comprenait pas le GEO. Voxa fait les deux pour 10× moins. On a coupé l'agence."</blockquote>
+        <div class="testi-author">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy"></div>
+          <div>
+            <div class="testi-name">Thomas B.</div>
+            <div class="testi-role" data-i18n="testi2.role">CMO, SaaS B2B</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi3.q">"Je suis solo founder. Voxa publie un article par jour pendant que je code. Premier lead qualifié venu de Perplexity au bout de 17 jours."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">ML</div>
+          <div>
+            <div class="testi-name">Mehdi L.</div>
+            <div class="testi-role" data-i18n="testi3.role">Indie hacker</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi4.q">"Première citation Perplexity au bout de 5 semaines, sur une requête où on n'aurait jamais pu trust un SEO classique. Le ROI est mesurable, c'est rare dans le contenu."</blockquote>
+        <div class="testi-author">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="" loading="lazy"></div>
+          <div>
+            <div class="testi-name">Sarah V.</div>
+            <div class="testi-role" data-i18n="testi4.role">Head of Growth, marketplace beauté</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi5.q">"Je validais 5 sujets par semaine en 10 minutes depuis le dashboard. Aujourd'hui je laisse l'autopilote tourner et je check les citations IA une fois par mois."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">AM</div>
+          <div>
+            <div class="testi-name">Antoine M.</div>
+            <div class="testi-role" data-i18n="testi5.role">CEO, agence d'architecture</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <blockquote data-i18n="testi6.q">"Le différenciateur c'est la qualité éditoriale. Les articles ne sentent pas l'IA générique, ils sont structurés comme des papiers de fond avec data et sources."</blockquote>
+        <div class="testi-author">
+          <div class="avatar"><img src="https://randomuser.me/api/portraits/women/12.jpg" alt="" loading="lazy"></div>
+          <div>
+            <div class="testi-name">Léa C.</div>
+            <div class="testi-role" data-i18n="testi6.role">Marketing Lead, app fitness</div>
+          </div>
+        </div>
+      </div>
+     </div>
     </div>
   </div>
 </section>
