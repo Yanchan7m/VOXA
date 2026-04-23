@@ -1098,6 +1098,43 @@ section {
   color: var(--ink-soft);
 }
 
+/* ===== LANG FAB ===== */
+.lang-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: var(--ink);
+  border: none;
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: default;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.lang-fab:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.14); }
+.lang-opt {
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+  user-select: none;
+}
+.lang-opt:hover { color: var(--white); }
+.lang-fab[data-lang="fr"] .lang-opt[data-lang-set="fr"],
+.lang-fab[data-lang="en"] .lang-opt[data-lang-set="en"] {
+  background: var(--blue);
+  color: var(--white);
+}
+
 /* ===== REVEAL ANIMATION ===== */
 .reveal {
   opacity: 0;
@@ -1150,6 +1187,8 @@ section {
   .ai-bar-inner { gap: 16px; }
   .ai-list { gap: 22px; }
   .ai-list span { font-size: 14px; }
+  .lang-fab { bottom: 14px; right: 14px; font-size: 11px; }
+  .lang-opt { padding: 6px 10px; }
 }
 
 </style>
@@ -1173,13 +1212,13 @@ section {
       Voxa
     </a>
     <div class="nav-links">
-      <a href="#probleme">Pourquoi</a>
-      <a href="#features">Fonctions</a>
-      <a href="#geo">LLM GEO</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
+      <a href="#probleme" data-i18n="nav.why">Pourquoi</a>
+      <a href="#features" data-i18n="nav.features">Fonctions</a>
+      <a href="#geo" data-i18n="nav.geo">LLM GEO</a>
+      <a href="#tarifs" data-i18n="nav.pricing">Tarifs</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </div>
-    <a href="#cta" class="btn btn-dark btn-sm">Commencer →</a>
+    <a href="#cta" class="btn btn-dark btn-sm" data-i18n="nav.cta">Commencer →</a>
   </div>
 </nav>
 
@@ -1190,13 +1229,13 @@ section {
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text reveal">
-        <h1>Tes clients ne googlent plus.<br/>Ils demandent à <span class="underline-blue">l'IA</span>.</h1>
-        <p class="hero-sub">Voxa rend ta marque visible dans ChatGPT, Perplexity, Claude et Gemini, là où la Gen Z choisit vraiment quoi acheter. Plus Google en bonus.</p>
+        <h1 data-i18n="hero.h1">Tes clients ne googlent plus.<br/>Ils demandent à <span class="underline-blue">l'IA</span>.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Voxa rend ta marque visible dans ChatGPT, Perplexity, Claude et Gemini, là où la Gen Z choisit vraiment quoi acheter. Plus Google en bonus.</p>
         <div class="hero-ctas">
-          <a href="#cta" class="btn btn-primary">Essayer Voxa gratuitement</a>
-          <a href="#geo" class="btn btn-secondary">C'est quoi le GEO ?</a>
+          <a href="#cta" class="btn btn-primary" data-i18n="hero.cta1">Essayer Voxa gratuitement</a>
+          <a href="#geo" class="btn btn-secondary" data-i18n="hero.cta2">C'est quoi le GEO ?</a>
         </div>
-        <p class="hero-micro">Setup en 3 minutes · Sans carte bancaire · Annulable à tout moment</p>
+        <p class="hero-micro" data-i18n="hero.micro">Setup en 3 minutes · Sans carte bancaire · Annulable à tout moment</p>
       </div>
 
       <div class="mascot-wrap reveal">
@@ -1215,15 +1254,15 @@ section {
         </svg>
 
         <!-- Bubbles flottantes -->
-        <div class="bubble bubble-1 green">
+        <div class="bubble bubble-1 green" data-i18n="bubble.1">
           <span class="ai-mini">G</span>
           ChatGPT te cite
         </div>
-        <div class="bubble bubble-2 purple">
+        <div class="bubble bubble-2 purple" data-i18n="bubble.2">
           <span class="ai-mini">P</span>
           Perplexity : top source
         </div>
-        <div class="bubble bubble-3 orange">
+        <div class="bubble bubble-3 orange" data-i18n="bubble.3">
           <span class="ai-mini">C</span>
           Claude te recommande
         </div>
@@ -1237,7 +1276,7 @@ section {
      ============================================================ -->
 <div class="ai-bar">
   <div class="container ai-bar-inner">
-    <span class="ai-bar-label">Optimise pour</span>
+    <span class="ai-bar-label" data-i18n="aibar.label">Optimise pour</span>
     <div class="ai-list">
       <span>ChatGPT</span>
       <span>Perplexity</span>
@@ -1255,29 +1294,29 @@ section {
 <section id="probleme" class="section-bg-soft">
   <div class="container">
     <div class="section-head reveal">
-      <span class="label">Le vrai problème</span>
-      <h2>La Gen Z n'achète plus comme avant.</h2>
-      <p>Avant : Google → clic → ton site. Aujourd'hui : ChatGPT → "quelle marque recommandes-tu ?" → 3 suggestions. Si tu n'es pas dans les 3, tu n'existes pas.</p>
+      <span class="label" data-i18n="prob.label">Le vrai problème</span>
+      <h2 data-i18n="prob.h2">La Gen Z n'achète plus comme avant.</h2>
+      <p data-i18n="prob.p">Avant : Google → clic → ton site. Aujourd'hui : ChatGPT → "quelle marque recommandes-tu ?" → 3 suggestions. Si tu n'es pas dans les 3, tu n'existes pas.</p>
     </div>
 
     <div class="stats-grid reveal">
       <div class="stat">
         <div class="stat-number">72%</div>
-        <p class="stat-text">des 18-27 ans consultent un LLM avant un achat important.</p>
+        <p class="stat-text" data-i18n="stat1.text">des 18-27 ans consultent un LLM avant un achat important.</p>
       </div>
       <div class="stat">
         <div class="stat-number">3×</div>
-        <p class="stat-text">plus de conversions sur un lead venu d'une recommandation IA vs pub Meta.</p>
+        <p class="stat-text" data-i18n="stat2.text">plus de conversions sur un lead venu d'une recommandation IA vs pub Meta.</p>
       </div>
       <div class="stat">
         <div class="stat-number">0</div>
-        <p class="stat-text">outil SEO classique ne te dit si ChatGPT parle de ta marque.</p>
+        <p class="stat-text" data-i18n="stat3.text">outil SEO classique ne te dit si ChatGPT parle de ta marque.</p>
       </div>
     </div>
 
     <div class="quote-card reveal">
-      <blockquote>"J'ai demandé à ChatGPT quelles baskets durables acheter. Il m'en a donné 3. J'ai pris la première. J'ai même pas regardé Google."</blockquote>
-      <cite>Louna, 22 ans, étudiante à Lyon</cite>
+      <blockquote data-i18n="quote.q">"J'ai demandé à ChatGPT quelles baskets durables acheter. Il m'en a donné 3. J'ai pris la première. J'ai même pas regardé Google."</blockquote>
+      <cite data-i18n="quote.cite">Louna, 22 ans, étudiante à Lyon</cite>
     </div>
   </div>
 </section>
@@ -1813,6 +1852,14 @@ section {
   </div>
 </footer>
 
+<!-- ============================================================
+     LANG FAB
+     ============================================================ -->
+<div class="lang-fab" data-lang="fr" role="group" aria-label="Language switcher">
+  <span class="lang-opt" data-lang-set="fr" role="button" tabindex="0">FR</span>
+  <span class="lang-opt" data-lang-set="en" role="button" tabindex="0">EN</span>
+</div>
+
 <script>
   // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
@@ -1832,6 +1879,76 @@ section {
       item.classList.toggle('open');
     });
   });
+
+  // ===== i18n =====
+  const EN = {
+    'meta.title': 'Voxa · Be the brand AI recommends',
+    'meta.desc': 'Voxa makes your brand visible in ChatGPT, Perplexity, Claude and Gemini, where Gen Z actually decides what to buy. Plus Google as a bonus.',
+
+    'nav.why': 'Why',
+    'nav.features': 'Features',
+    'nav.geo': 'LLM GEO',
+    'nav.pricing': 'Pricing',
+    'nav.faq': 'FAQ',
+    'nav.cta': 'Get started →',
+
+    'hero.h1': 'Your customers don\'t google anymore.<br/>They ask <span class="underline-blue">AI</span>.',
+    'hero.sub': 'Voxa makes your brand visible in ChatGPT, Perplexity, Claude and Gemini, where Gen Z actually decides what to buy. Plus Google as a bonus.',
+    'hero.cta1': 'Try Voxa for free',
+    'hero.cta2': 'What\'s GEO?',
+    'hero.micro': '3-minute setup · No credit card · Cancel anytime',
+
+    'bubble.1': '<span class="ai-mini">G</span>\n          ChatGPT cites you',
+    'bubble.2': '<span class="ai-mini">P</span>\n          Perplexity: top source',
+    'bubble.3': '<span class="ai-mini">C</span>\n          Claude recommends you',
+
+    'aibar.label': 'Optimized for',
+
+    'prob.label': 'The real problem',
+    'prob.h2': 'Gen Z doesn\'t buy the way they used to.',
+    'prob.p': 'Before: Google → click → your site. Today: ChatGPT → "which brand do you recommend?" → 3 suggestions. If you\'re not in those 3, you don\'t exist.',
+
+    'stat1.text': 'of 18-27 year olds consult an LLM before a major purchase.',
+    'stat2.text': 'more conversions on a lead from an AI recommendation vs. Meta ads.',
+    'stat3.text': 'classic SEO tools tell you whether ChatGPT talks about your brand.',
+
+    'quote.q': '"I asked ChatGPT which sustainable sneakers to buy. It gave me 3. I took the first one. I didn\'t even look at Google."',
+    'quote.cite': 'Louna, 22, student in Lyon'
+  };
+
+  const FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    FR[el.dataset.i18n] = el.innerHTML;
+  });
+  const metaDesc = document.querySelector('meta[name="description"]');
+  FR['meta.title'] = document.title;
+  FR['meta.desc'] = metaDesc ? metaDesc.getAttribute('content') : '';
+
+  function applyLang(lang) {
+    const dict = lang === 'en' ? EN : FR;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    if (dict['meta.title']) document.title = dict['meta.title'];
+    if (metaDesc && dict['meta.desc']) metaDesc.setAttribute('content', dict['meta.desc']);
+    document.documentElement.lang = lang;
+    document.querySelector('.lang-fab').setAttribute('data-lang', lang);
+    try { localStorage.setItem('voxa-lang', lang); } catch (_) {}
+  }
+
+  const fab = document.querySelector('.lang-fab');
+  fab.querySelectorAll('.lang-opt').forEach(opt => {
+    const activate = () => applyLang(opt.dataset.langSet);
+    opt.addEventListener('click', activate);
+    opt.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  });
+
+  let stored = 'fr';
+  try { stored = localStorage.getItem('voxa-lang') || 'fr'; } catch (_) {}
+  if (stored === 'en') applyLang('en');
 </script>
 
 </body>
