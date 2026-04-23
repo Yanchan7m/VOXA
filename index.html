@@ -1132,6 +1132,223 @@ section {
   color: var(--ink-soft);
 }
 
+/* ===== LIVE DEMO ===== */
+.demo-section {
+  padding: 80px 0 40px;
+  background: var(--white);
+}
+.demo-stage {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.demo-window {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.demo-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--stroke);
+  position: relative;
+}
+.demo-tdot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--stroke);
+}
+.demo-tdot:nth-child(1) { background: #ff5f57; }
+.demo-tdot:nth-child(2) { background: #ffbd2e; }
+.demo-tdot:nth-child(3) { background: #28c840; }
+.demo-url {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.demo-conv {
+  padding: 28px 32px 32px;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.demo-msg-user { display: flex; justify-content: flex-end; }
+.demo-bubble {
+  background: var(--blue);
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 75%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.demo-msg-ai {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.demo-ai-icon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6 60%, #ec4899);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+.demo-ai-icon svg { width: 18px; height: 18px; }
+.demo-ai-content {
+  flex: 1;
+  min-width: 0;
+}
+.demo-thinking {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 18px;
+  background: var(--off-white);
+  border-radius: 18px 18px 18px 4px;
+}
+.demo-thinking span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  animation: demo-think 1.2s ease-in-out infinite;
+}
+.demo-thinking span:nth-child(2) { animation-delay: 0.18s; }
+.demo-thinking span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes demo-think {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+.demo-answer-intro {
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.demo-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.demo-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.demo-card-img {
+  height: 88px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+.demo-card:nth-child(2) .demo-card-img {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+.demo-card:nth-child(3) .demo-card-img {
+  background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+}
+.demo-card-name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  letter-spacing: -0.01em;
+}
+.demo-card-tag {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.demo-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.demo-card-price {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  font-family: 'Geist Mono', monospace;
+}
+.demo-card-cite {
+  font-size: 10.5px;
+  font-family: 'Geist Mono', monospace;
+  color: var(--blue-dark);
+  background: var(--blue-soft);
+  padding: 2px 7px;
+  border-radius: 100px;
+}
+
+/* Animation orchestration — 13s loop */
+.demo-msg-user,
+.demo-thinking,
+.demo-ai-content .demo-answer,
+.demo-card {
+  opacity: 0;
+}
+.demo-msg-user        { animation: demo-prompt   13s infinite ease-out; }
+.demo-thinking        { animation: demo-thinkin  13s infinite ease-out; }
+.demo-ai-content .demo-answer { animation: demo-answer 13s infinite ease-out; }
+.demo-card:nth-child(1) { animation: demo-card1 13s infinite ease-out; }
+.demo-card:nth-child(2) { animation: demo-card2 13s infinite ease-out; }
+.demo-card:nth-child(3) { animation: demo-card3 13s infinite ease-out; }
+
+@keyframes demo-prompt {
+  0%, 3%   { opacity: 0; transform: translateY(8px); }
+  8%, 92%  { opacity: 1; transform: translateY(0); }
+  97%,100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes demo-thinkin {
+  0%, 12%  { opacity: 0; transform: translateY(6px); }
+  16%, 28% { opacity: 1; transform: translateY(0); }
+  32%,100% { opacity: 0; transform: translateY(0); display: none; }
+}
+@keyframes demo-answer {
+  0%, 30%  { opacity: 0; transform: translateY(6px); }
+  34%, 92% { opacity: 1; transform: translateY(0); }
+  97%,100% { opacity: 0; }
+}
+@keyframes demo-card1 {
+  0%, 38%  { opacity: 0; transform: translateY(10px); }
+  44%, 92% { opacity: 1; transform: translateY(0); }
+  97%,100% { opacity: 0; }
+}
+@keyframes demo-card2 {
+  0%, 48%  { opacity: 0; transform: translateY(10px); }
+  54%, 92% { opacity: 1; transform: translateY(0); }
+  97%,100% { opacity: 0; }
+}
+@keyframes demo-card3 {
+  0%, 58%  { opacity: 0; transform: translateY(10px); }
+  64%, 92% { opacity: 1; transform: translateY(0); }
+  97%,100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-msg-user, .demo-thinking, .demo-ai-content .demo-answer, .demo-card {
+    opacity: 1;
+    animation: none;
+  }
+  .demo-thinking { display: none; }
+}
+
 /* ===== HERO VIDEO ===== */
 .hero-video-section {
   padding: 40px 0 90px;
@@ -1156,6 +1373,11 @@ section {
 @media (max-width: 768px) {
   .hero-video-section { padding: 24px 0 70px; }
   .hero-video { border-radius: var(--radius-md); }
+  .demo-section { padding: 60px 0 24px; }
+  .demo-conv { padding: 22px 18px 24px; min-height: 0; gap: 14px; }
+  .demo-cards { grid-template-columns: 1fr; }
+  .demo-bubble { font-size: 14px; }
+  .demo-url { display: none; }
 }
 
 /* ===== LANG FAB ===== */
@@ -1353,6 +1575,81 @@ section {
     </div>
   </div>
 </div>
+
+<!-- ============================================================
+     LIVE DEMO — chat assistant
+     ============================================================ -->
+<section class="demo-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label" data-i18n="demo.label">Démo live</span>
+      <h2 data-i18n="demo.h2">Voilà ce que tes clients voient.</h2>
+      <p data-i18n="demo.p">Une question, trois recommandations. Si ta marque n'est pas dans les trois, tu n'existes pas.</p>
+    </div>
+
+    <div class="demo-stage reveal">
+      <div class="demo-window">
+        <div class="demo-titlebar">
+          <span class="demo-tdot"></span>
+          <span class="demo-tdot"></span>
+          <span class="demo-tdot"></span>
+          <span class="demo-url">assistant.ai · nouvelle conversation</span>
+        </div>
+
+        <div class="demo-conv">
+          <div class="demo-msg-user">
+            <div class="demo-bubble" data-i18n="demo.q">Quelle crème hydratante pour peau sensible tu me conseilles ?</div>
+          </div>
+
+          <div class="demo-msg-ai">
+            <div class="demo-ai-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <div class="demo-ai-content">
+              <div class="demo-thinking" aria-label="L'assistant réfléchit">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="demo-answer">
+                <p class="demo-answer-intro" data-i18n="demo.intro">Pour une peau sensible, voici trois crèmes recommandées par les avis et la littérature dermatologique récente :</p>
+                <div class="demo-cards">
+                  <div class="demo-card">
+                    <div class="demo-card-img" aria-hidden="true">🧴</div>
+                    <div class="demo-card-name">Hydra Calm</div>
+                    <div class="demo-card-tag" data-i18n="demo.tag1">Hypoallergénique, sans parfum, céramides</div>
+                    <div class="demo-card-foot">
+                      <span class="demo-card-price">24 €</span>
+                      <span class="demo-card-cite">cité 12×</span>
+                    </div>
+                  </div>
+                  <div class="demo-card">
+                    <div class="demo-card-img" aria-hidden="true">🪷</div>
+                    <div class="demo-card-name">Sensitive Repair</div>
+                    <div class="demo-card-tag" data-i18n="demo.tag2">Niacinamide + acide hyaluronique</div>
+                    <div class="demo-card-foot">
+                      <span class="demo-card-price">38 €</span>
+                      <span class="demo-card-cite">cité 8×</span>
+                    </div>
+                  </div>
+                  <div class="demo-card">
+                    <div class="demo-card-img" aria-hidden="true">🌸</div>
+                    <div class="demo-card-name">Pure Velvet</div>
+                    <div class="demo-card-tag" data-i18n="demo.tag3">Texture légère, peaux réactives</div>
+                    <div class="demo-card-foot">
+                      <span class="demo-card-price">19 €</span>
+                      <span class="demo-card-cite">cité 6×</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================================
      HERO VIDEO
@@ -2145,6 +2442,15 @@ section {
     'bubble.3': '<span class="ai-mini">C</span>\n          Claude recommends you',
 
     'aibar.label': 'Optimized for',
+
+    'demo.label': 'Live demo',
+    'demo.h2': 'This is what your customers see.',
+    'demo.p': 'One question, three recommendations. If your brand isn\'t one of the three, you don\'t exist.',
+    'demo.q': 'Which moisturizer would you recommend for sensitive skin?',
+    'demo.intro': 'For sensitive skin, here are three creams recommended by recent reviews and dermatology literature:',
+    'demo.tag1': 'Hypoallergenic, fragrance-free, ceramides',
+    'demo.tag2': 'Niacinamide + hyaluronic acid',
+    'demo.tag3': 'Lightweight texture, reactive skin',
 
     'prob.label': 'The real problem',
     'prob.h2': 'Gen Z doesn\'t buy the way they used to.',
