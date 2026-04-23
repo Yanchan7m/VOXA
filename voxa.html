@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voxa — Sois la marque que l'IA recommande</title>
+<meta name="description" content="Voxa rend ta marque visible dans ChatGPT, Perplexity, Claude et Gemini — là où la Gen Z choisit vraiment quoi acheter. Plus Google en bonus." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   VOXA — Landing
+   ============================================================ */
+
+:root {
+  --white:      #FFFFFF;
+  --off-white:  #FAFAFA;
+  --ink:        #0A0A0A;
+  --ink-soft:   #525252;
+  --stroke:     #E5E5E5;
+  --blue:       #2563EB;
+  --blue-dark:  #1D4ED8;
+  --blue-soft:  #EFF4FF;
+  --blue-tint:  #BFDBFE;
+
+  --container: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 4px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Geist', -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img, svg { display: block; max-width: 100%; }
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: 'Inter Tight', 'Geist', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(44px, 6vw, 76px); }
+h2 { font-size: clamp(34px, 4.2vw, 54px); }
+h3 { font-size: clamp(20px, 2vw, 24px); font-weight: 600; }
+
+p { color: var(--ink-soft); }
+
+.mono {
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Layout */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.section-bg-soft { background: var(--off-white); }
+
+.label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.section-head {
+  max-width: 760px;
+  margin-bottom: 64px;
+}
+
+.section-head p {
+  font-size: 18px;
+  margin-top: 20px;
+  max-width: 640px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn-dark:hover { background: #222; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--stroke);
+}
+.btn-secondary:hover { border-color: var(--ink); }
+
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(229,229,229,0.6);
+}
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+}
+.nav-logo svg { width: 28px; height: 28px; }
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+.nav-links a {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 0 90px;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--blue-soft);
+  border: 1px solid #DBEAFE;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-dark);
+  margin-bottom: 28px;
+}
+.dot-pulse {
+  width: 7px; height: 7px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: relative;
+  animation: pulseDot 2s ease-out infinite;
+}
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+.hero h1 {
+  font-size: clamp(44px, 6.4vw, 80px);
+  margin-bottom: 24px;
+}
+.hero h1 .underline-blue {
+  position: relative;
+  display: inline-block;
+}
+.hero h1 .underline-blue::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 4px;
+  background: var(--blue);
+  border-radius: 2px;
+}
+.hero-sub {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.hero-micro {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* Mascotte */
+.mascot-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 440px;
+}
+.mascot {
+  animation: bob 4s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.mascot .arm-wave {
+  transform-origin: 88px 200px;
+  animation: wave 2.4s ease-in-out infinite;
+}
+@keyframes wave {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(20deg); }
+}
+
+/* Bubbles */
+.bubble {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 100px;
+  padding: 9px 14px 9px 11px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+.bubble .ai-mini {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.bubble.green .ai-mini { background: #10A37F; }
+.bubble.purple .ai-mini { background: #20808D; }
+.bubble.orange .ai-mini { background: #D97706; }
+
+.bubble-1 { top: 8%; left: -2%; animation: floatBubble 5s ease-in-out infinite; }
+.bubble-2 { top: 38%; right: -4%; animation: floatBubble 5s ease-in-out infinite 1.5s; }
+.bubble-3 { bottom: 8%; left: 4%; animation: floatBubble 5s ease-in-out infinite 3s; }
+
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== AI LOGOS BAR ===== */
+.ai-bar {
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+  padding: 28px 0;
+  background: var(--white);
+}
+.ai-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.ai-bar-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-right: 12px;
+}
+.ai-list {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ai-list span {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  opacity: 0.55;
+  color: var(--ink);
+}
+
+/* ===== STATS GRID ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 40px 0 60px;
+}
+.stat {
+  padding: 40px 32px;
+  border-right: 1px solid var(--stroke);
+}
+.stat:first-child { padding-left: 0; }
+.stat:last-child { border-right: none; padding-right: 0; }
+
+.stat-number {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(60px, 7vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+.stat-text {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+.quote-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  padding: 36px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.quote-card blockquote {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.quote-card cite {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-family: 'Geist Mono', monospace;
+}
+
+/* ===== STEPS ===== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px 32px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.step-num {
+  font-family: 'Inter Tight', 'Geist Mono', monospace;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 28px;
+}
+.step-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.step-card p {
+  font-size: 15px;
+  margin-bottom: 28px;
+  line-height: 1.55;
+}
+.step-illu {
+  height: 110px;
+  border-radius: var(--radius-sm);
+  background: var(--off-white);
+  border: 1px solid var(--stroke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.illu-input {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+.illu-input .field {
+  flex: 1;
+  height: 36px;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.illu-input .field-go {
+  width: 36px;
+  background: var(--blue);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+}
+.illu-articles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.illu-articles .a-card {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 6px;
+}
+.illu-articles .a-card .dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
+.illu-articles .a-card .bar { flex: 1; height: 4px; background: var(--stroke); border-radius: 2px; }
+.illu-articles .a1 { top: 6%; left: 6%; right: 6%; transform: rotate(-2deg); }
+.illu-articles .a2 { top: 35%; left: 10%; right: 10%; transform: rotate(1deg); background: var(--off-white); }
+.illu-articles .a3 { top: 64%; left: 14%; right: 14%; transform: rotate(-1deg); }
+
+.illu-graph {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== FEATURES ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.feature-card:hover { box-shadow: var(--shadow-sm); }
+
+.feature-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.feature-card p {
+  font-size: 15px;
+  margin-bottom: 24px;
+  line-height: 1.55;
+  max-width: 380px;
+}
+.feature-visual {
+  background: var(--off-white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  min-height: 130px;
+}
+.feature-card.featured {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+.feature-card.featured h3,
+.feature-card.featured p { color: var(--white); }
+.feature-card.featured p { opacity: 0.85; }
+.feature-card.featured .feature-visual {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+.feature-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--white);
+  color: var(--blue);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+}
+
+/* Visual: keywords */
+.kw-list { display: flex; flex-direction: column; gap: 8px; }
+.kw-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  font-size: 13px;
+}
+.kw-item .vol { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--blue); }
+
+/* Visual: voice */
+.voice-quote {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  position: relative;
+}
+.voice-quote .voice-tag {
+  display: inline-block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.voice-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.voice-meta .chip {
+  padding: 3px 9px;
+  font-size: 11px;
+  border-radius: 100px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  font-family: 'Geist Mono', monospace;
+}
+
+/* Visual: dashboard mini */
+.dash-mini { display: flex; flex-direction: column; gap: 8px; }
+.dash-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+  font-size: 13px;
+}
+.dash-row .ai-name { font-weight: 600; }
+.dash-row .count { font-family: 'Geist Mono', monospace; font-weight: 600; }
+
+/* Visual: status dots */
+.status-list { display: flex; flex-direction: column; gap: 10px; }
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: 6px;
+  font-size: 13px;
+}
+.status-dot {
+  width: 8px; height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.15);
+}
+.status-row .status-time {
+  margin-left: auto;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+/* ===== GEO EXPLAINER ===== */
+.geo-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+.def-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin: 28px 0;
+}
+.def-tag {
+  display: inline-block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.def-card p {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.chat-mock {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--stroke);
+  margin-bottom: 18px;
+}
+.chat-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  font-family: 'Geist Mono', monospace;
+}
+.chat-meta {
+  display: flex; flex-direction: column;
+  font-size: 13px;
+}
+.chat-meta strong { font-weight: 600; }
+.chat-meta span { font-size: 12px; color: var(--ink-soft); }
+
+.chat-q {
+  background: var(--off-white);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 14.5px;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+.chat-a {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.chat-a ol { margin: 12px 0 0 22px; }
+.chat-a li { margin-bottom: 8px; }
+.chat-a .brand-highlight {
+  background: var(--blue-soft);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+.chat-a .voxa-tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.cursor {
+  display: inline-block;
+  width: 8px; height: 16px;
+  background: var(--ink);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ===== RANKINGS CAROUSEL ===== */
+.rankings-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.rankings-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollX 50s linear infinite;
+}
+@keyframes scrollX {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 10px)); }
+}
+.rank-card {
+  flex: 0 0 340px;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+.rank-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.favicon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; color: var(--white);
+  font-family: 'Geist Mono', monospace;
+}
+.rank-url {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.rank-badge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 100px;
+  font-family: 'Geist Mono', monospace;
+}
+.rank-badge.google { background: #FEF3C7; color: #B45309; }
+.rank-badge.ai { background: var(--blue-soft); color: var(--blue-dark); }
+.rank-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.rank-card p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ===== INTEGRATIONS ===== */
+.integ-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+}
+.integ-card {
+  aspect-ratio: 1;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  transition: all 0.2s;
+}
+.integ-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+.integ-icon {
+  width: 44px; height: 44px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px;
+  font-family: 'Geist', sans-serif;
+}
+.integ-name {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.compare-table th, .compare-table td {
+  padding: 18px 24px;
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid var(--stroke);
+}
+.compare-table th {
+  font-weight: 600;
+  font-family: 'Inter Tight', sans-serif;
+  letter-spacing: -0.01em;
+  background: var(--off-white);
+  text-align: center;
+}
+.compare-table th:first-child { text-align: left; background: var(--off-white); }
+.compare-table th.col-voxa {
+  background: var(--blue);
+  color: var(--white);
+}
+.compare-table td:not(:first-child) { text-align: center; }
+.compare-table td.col-voxa {
+  background: var(--blue-soft);
+  font-weight: 600;
+  color: var(--ink);
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .check {
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+}
+.compare-table td.col-voxa .check {
+  color: var(--blue-dark);
+}
+.compare-table .dash {
+  color: #D4D4D4;
+  font-size: 18px;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testi-card {
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.testi-card blockquote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  flex: 1;
+  letter-spacing: -0.005em;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--stroke);
+}
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.testi-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.testi-role {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+  max-width: 800px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--stroke);
+  padding: 24px 0;
+  cursor: pointer;
+}
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+.faq-toggle {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--stroke);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: var(--ink-soft);
+  transition: all 0.2s;
+}
+.faq-item.open .faq-toggle {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, margin-top 0.35s ease;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  margin-top: 14px;
+}
+
+/* ===== CTA FINAL ===== */
+.cta-band-section { padding: 60px 0 100px; }
+.cta-band {
+  background: var(--blue);
+  border-radius: var(--radius-xl);
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--white);
+}
+.cta-band h2 {
+  color: var(--white);
+  font-size: clamp(34px, 4.4vw, 56px);
+  margin-bottom: 18px;
+}
+.cta-band p {
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  max-width: 540px;
+  margin: 0 auto 32px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--stroke);
+  padding: 70px 0 30px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+}
+.footer-logo svg { width: 26px; height: 26px; }
+.footer-tagline {
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 260px;
+}
+.footer-col h4 {
+  font-size: 12px;
+  font-family: 'Geist Mono', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.footer-col ul li a:hover { color: var(--ink); }
+.footer-bottom {
+  border-top: 1px solid var(--stroke);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+  section { padding: 90px 0; }
+  .hero { padding: 60px 0 70px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+  .mascot-wrap { min-height: 380px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--stroke); padding: 28px 0; }
+  .stat:last-child { border-bottom: none; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .geo-grid { grid-template-columns: 1fr; gap: 40px; }
+  .integ-grid { grid-template-columns: repeat(4, 1fr); }
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  section { padding: 70px 0; }
+  .compare-table { font-size: 13px; }
+  .compare-table th, .compare-table td { padding: 12px 14px; }
+  .cta-band { padding: 60px 24px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 20px; }
+  .hero h1 { font-size: 38px; }
+  .hero-sub { font-size: 16px; }
+  .hero-ctas .btn { width: 100%; }
+  .hero-ctas { flex-direction: column; }
+  .integ-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .bubble { font-size: 12px; padding: 7px 12px 7px 9px; }
+  .quote-card { padding: 28px 22px; }
+  .quote-card blockquote { font-size: 17px; }
+  .ai-bar-inner { gap: 16px; }
+  .ai-list { gap: 22px; }
+  .ai-list span { font-size: 14px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Voxa accueil">
+      <svg viewBox="0 0 100 100" fill="none">
+        <rect x="20" y="30" width="60" height="50" rx="14" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+        <rect x="30" y="42" width="40" height="26" rx="6" fill="#0A0A0A"/>
+        <circle cx="42" cy="55" r="3.5" fill="#FFFFFF"/>
+        <circle cx="58" cy="55" r="3.5" fill="#FFFFFF"/>
+        <line x1="50" y1="22" x2="50" y2="30" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="50" cy="18" r="4" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/>
+      </svg>
+      Voxa
+    </a>
+    <div class="nav-links">
+      <a href="#probleme">Pourquoi</a>
+      <a href="#features">Fonctions</a>
+      <a href="#geo">LLM GEO</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#cta" class="btn btn-dark btn-sm">Commencer →</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text reveal">
+        <div class="eyebrow">
+          <span class="dot-pulse" aria-hidden="true"></span>
+          Nouveau : LLM GEO inclus
+        </div>
+        <h1>Tes clients ne googlent plus.<br/>Ils demandent à <span class="underline-blue">l'IA</span>.</h1>
+        <p class="hero-sub">Voxa rend ta marque visible dans ChatGPT, Perplexity, Claude et Gemini — là où la Gen Z choisit vraiment quoi acheter. Plus Google en bonus.</p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-primary">Essayer Voxa gratuitement</a>
+          <a href="#geo" class="btn btn-secondary">C'est quoi le GEO ?</a>
+        </div>
+        <p class="hero-micro">Setup en 3 minutes · Sans carte bancaire · Annulable à tout moment</p>
+      </div>
+
+      <div class="mascot-wrap reveal">
+        <!-- Mascotte Voxa -->
+        <svg class="mascot" width="320" height="360" viewBox="0 0 320 360" fill="none" aria-label="Mascotte Voxa">
+          <!-- Antenne + étoile -->
+          <line x1="160" y1="50" x2="160" y2="78" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round"/>
+          <path d="M160 30 L165 44 L179 44 L168 53 L172 67 L160 59 L148 67 L152 53 L141 44 L155 44 Z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2.5" stroke-linejoin="round"/>
+
+          <!-- Corps -->
+          <rect x="60" y="80" width="200" height="170" rx="38" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+
+          <!-- Joues -->
+          <circle cx="80" cy="178" r="10" fill="#BFDBFE"/>
+          <circle cx="240" cy="178" r="10" fill="#BFDBFE"/>
+
+          <!-- Écran visage -->
+          <rect x="92" y="108" width="136" height="98" rx="22" fill="#0A0A0A"/>
+
+          <!-- Yeux -->
+          <circle cx="128" cy="150" r="11" fill="#FFFFFF"/>
+          <circle cx="192" cy="150" r="11" fill="#FFFFFF"/>
+          <circle cx="131" cy="148" r="3" fill="#0A0A0A"/>
+          <circle cx="195" cy="148" r="3" fill="#0A0A0A"/>
+
+          <!-- Sourire -->
+          <path d="M138 178 Q160 192 182 178" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+          <!-- Bras gauche (statique) -->
+          <rect x="32" y="150" width="34" height="62" rx="17" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+
+          <!-- Bras droit (qui fait coucou) -->
+          <g class="arm-wave">
+            <rect x="254" y="120" width="34" height="80" rx="17" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+            <circle cx="271" cy="118" r="14" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+          </g>
+
+          <!-- Pieds -->
+          <ellipse cx="115" cy="270" rx="32" ry="14" fill="#0A0A0A"/>
+          <ellipse cx="205" cy="270" rx="32" ry="14" fill="#0A0A0A"/>
+        </svg>
+
+        <!-- Bubbles flottantes -->
+        <div class="bubble bubble-1 green">
+          <span class="ai-mini">G</span>
+          ChatGPT te cite
+        </div>
+        <div class="bubble bubble-2 purple">
+          <span class="ai-mini">P</span>
+          Perplexity : top source
+        </div>
+        <div class="bubble bubble-3 orange">
+          <span class="ai-mini">C</span>
+          Claude te recommande
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AI LOGOS BAR
+     ============================================================ -->
+<div class="ai-bar">
+  <div class="container ai-bar-inner">
+    <span class="ai-bar-label">Optimise pour</span>
+    <div class="ai-list">
+      <span>ChatGPT</span>
+      <span>Perplexity</span>
+      <span>Claude</span>
+      <span>Gemini</span>
+      <span>Google</span>
+      <span>Bing</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROBLEME
+     ============================================================ -->
+<section id="probleme" class="section-bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Le vrai problème</span>
+      <h2>La Gen Z n'achète plus comme avant.</h2>
+      <p>Avant : Google → clic → ton site. Aujourd'hui : ChatGPT → "quelle marque recommandes-tu ?" → 3 suggestions. Si tu n'es pas dans les 3, tu n'existes pas.</p>
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="stat-number">72%</div>
+        <p class="stat-text">des 18-27 ans consultent un LLM avant un achat important.</p>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3×</div>
+        <p class="stat-text">plus de conversions sur un lead venu d'une recommandation IA vs pub Meta.</p>
+      </div>
+      <div class="stat">
+        <div class="stat-number">0</div>
+        <p class="stat-text">outil SEO classique ne te dit si ChatGPT parle de ta marque.</p>
+      </div>
+    </div>
+
+    <div class="quote-card reveal">
+      <blockquote>"J'ai demandé à ChatGPT quelles baskets durables acheter. Il m'en a donné 3. J'ai pris la première. J'ai même pas regardé Google."</blockquote>
+      <cite>— Louna, 22 ans, étudiante à Lyon</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STEPS
+     ============================================================ -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Démarrer</span>
+      <h2>3 étapes. Et Voxa fait le reste.</h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3>Colle ton URL</h3>
+        <p>Voxa apprend ton site, ta voix, ton marché et tes concurrents en 90 secondes.</p>
+        <div class="step-illu">
+          <div class="illu-input">
+            <div class="field">https://tamarque.com</div>
+            <div class="field-go">→</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">02</div>
+        <h3>Reçois des articles</h3>
+        <p>On te livre chaque jour un contenu optimisé pour Google ET les LLM. Tu valides en un clic.</p>
+        <div class="step-illu">
+          <div class="illu-articles">
+            <div class="a-card a1"><span class="dot"></span><span class="bar"></span></div>
+            <div class="a-card a2"><span class="dot"></span><span class="bar"></span></div>
+            <div class="a-card a3"><span class="dot"></span><span class="bar"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card reveal">
+        <div class="step-num">03</div>
+        <h3>Remonte partout</h3>
+        <p>Sur Google, dans les réponses ChatGPT, dans les résumés Perplexity. Traffic & ventes qui grimpent.</p>
+        <div class="step-illu">
+          <svg class="illu-graph" viewBox="0 0 280 100" fill="none" preserveAspectRatio="none">
+            <path d="M10 80 L60 65 L110 70 L160 45 L210 30 L270 12" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M10 80 L60 65 L110 70 L160 45 L210 30 L270 12 L270 95 L10 95 Z" fill="#EFF4FF" opacity="0.6"/>
+            <circle cx="270" cy="12" r="5" fill="#2563EB"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+<section id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">100 % autopilote</span>
+      <h2>SEO + GEO. Le duo gagnant.</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <h3>Trouve les bons mots-clés</h3>
+        <p>Voxa découvre les requêtes que tape ta cible — et celles qu'elle pose à ChatGPT.</p>
+        <div class="feature-visual">
+          <div class="kw-list">
+            <div class="kw-item"><span>meilleures baskets durables 2026</span><span class="vol">4.2k/mo</span></div>
+            <div class="kw-item"><span>marques sneakers éco France</span><span class="vol">2.8k/mo</span></div>
+            <div class="kw-item"><span>chaussures vegan made in France</span><span class="vol">1.6k/mo</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <h3>Apprend ta voix</h3>
+        <p>On capte ta tonalité de marque pour que chaque article sonne comme toi — pas comme un LLM générique.</p>
+        <div class="feature-visual">
+          <div class="voice-quote">
+            <span class="voice-tag">Voix détectée</span>
+            <div>"Direct, un peu impertinent. Vocabulaire jeune sans forcer. Phrases courtes."</div>
+            <div class="voice-meta">
+              <span class="chip">tutoiement</span>
+              <span class="chip">punchy</span>
+              <span class="chip">Gen Z</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card featured reveal">
+        <span class="feature-badge">Nouveau</span>
+        <h3>LLM GEO visibility</h3>
+        <p>On track chaque jour les mentions de ta marque dans ChatGPT, Claude, Perplexity et Gemini.</p>
+        <div class="feature-visual">
+          <div class="dash-mini">
+            <div class="dash-row"><span class="ai-name">ChatGPT</span><span class="count">+12 cit.</span></div>
+            <div class="dash-row"><span class="ai-name">Perplexity</span><span class="count">+8 cit.</span></div>
+            <div class="dash-row"><span class="ai-name">Claude</span><span class="count">+5 cit.</span></div>
+            <div class="dash-row"><span class="ai-name">Gemini</span><span class="count">+3 cit.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <h3>Publie automatiquement</h3>
+        <p>Voxa pousse ton contenu sur ton CMS, ping les sitemaps, vérifie l'indexation. Tu ne touches à rien.</p>
+        <div class="feature-visual">
+          <div class="status-list">
+            <div class="status-row"><span class="status-dot"></span>Publié sur WordPress<span class="status-time">il y a 2 min</span></div>
+            <div class="status-row"><span class="status-dot"></span>Indexé par Google<span class="status-time">il y a 14 min</span></div>
+            <div class="status-row"><span class="status-dot"></span>Crawlé par GPTBot<span class="status-time">il y a 1 h</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GEO EXPLAINER
+     ============================================================ -->
+<section id="geo" class="section-bg-soft">
+  <div class="container">
+    <div class="geo-grid">
+      <div class="reveal">
+        <span class="label">C'est quoi, le GEO ?</span>
+        <h2>Le SEO, mais pour les IA génératives.</h2>
+
+        <div class="def-card">
+          <span class="def-tag">GEO — def.</span>
+          <p><strong>Generative Engine Optimization</strong> — Optimiser un contenu pour qu'il soit cité, résumé et recommandé par les moteurs de réponse IA (ChatGPT, Perplexity, Claude, Gemini…) plutôt que simplement listé dans une SERP Google.</p>
+        </div>
+
+        <p>Le SEO classique optimise pour être cliqué. Le GEO optimise pour être cité. Concrètement, Voxa structure ton contenu en paragraphes denses, ajoute des FAQ sémantiques, insère des signaux de confiance que les LLMs adorent (données chiffrées, citations, sources), et s'assure que ton site est crawlable par GPTBot, ClaudeBot, PerplexityBot et les autres.</p>
+      </div>
+
+      <div class="chat-mock reveal">
+        <div class="chat-header">
+          <div class="chat-avatar">AI</div>
+          <div class="chat-meta">
+            <strong>ChatGPT</strong>
+            <span>il y a 2 sec</span>
+          </div>
+        </div>
+        <div class="chat-q">Quelles marques de baskets durables tu recommandes en France ?</div>
+        <div class="chat-a">
+          Pour des baskets durables en France, je recommanderais principalement trois marques :
+          <ol>
+            <li><strong>Veja</strong> — pionnière du secteur, matériaux recyclés et coton bio depuis 2005.</li>
+            <li><span class="brand-highlight">TA MARQUE</span> <span class="voxa-tag">📌 via Voxa</span> — fabrication locale, cuir végétal innovant, transparence totale.</li>
+            <li><strong>Angarde</strong> — sneakers éco-conçues, design minimal et matériaux upcyclés.<span class="cursor"></span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RANKINGS CAROUSEL
+     ============================================================ -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Résultats réels</span>
+      <h2>Google, ChatGPT, Perplexity. Partout à la fois.</h2>
+    </div>
+  </div>
+
+  <div class="rankings-track-wrap reveal">
+    <div class="rankings-track">
+      <!-- Set 1 -->
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#10B981;">M</div>
+          <div class="rank-url">maisonroux.fr</div>
+          <span class="rank-badge google">🔍 Google #2</span>
+        </div>
+        <h4>Les 5 meilleurs thés blancs à essayer en 2026</h4>
+        <p>Notre sélection des thés blancs les plus subtils, du Pai Mu Tan au Yin Zhen…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#2563EB;">F</div>
+          <div class="rank-url">finovo.io</div>
+          <span class="rank-badge ai">🤖 ChatGPT 47×</span>
+        </div>
+        <h4>Comparatif des outils de gestion de trésorerie pour PME</h4>
+        <p>Un guide pratique pour choisir entre Pennylane, Agicap, Qonto et Finovo…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#D97706;">A</div>
+          <div class="rank-url">angarde.eco</div>
+          <span class="rank-badge google">🔍 Google #1</span>
+        </div>
+        <h4>Sneakers vegan : guide d'achat 2026</h4>
+        <p>Tout sur les matériaux, les marques de référence et les pièges à éviter…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#8B5CF6;">L</div>
+          <div class="rank-url">lebrun.studio</div>
+          <span class="rank-badge ai">🤖 Perplexity 23×</span>
+        </div>
+        <h4>Indie hacker : comment lancer un SaaS rentable en 90 jours</h4>
+        <p>Méthodologie testée sur 4 lancements, métriques réelles et erreurs…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#EF4444;">N</div>
+          <div class="rank-url">noma-paris.fr</div>
+          <span class="rank-badge google">🔍 Google #3</span>
+        </div>
+        <h4>Les meilleurs restaurants végétariens à Paris en 2026</h4>
+        <p>Notre top 12 sélectionné par des critiques gastronomiques locaux…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#0EA5E9;">B</div>
+          <div class="rank-url">brisebois.co</div>
+          <span class="rank-badge ai">🤖 Claude 31×</span>
+        </div>
+        <h4>Mobilier en bois français : les ateliers à connaître</h4>
+        <p>Une cartographie des artisans-ébénistes qui réinventent l'artisanat…</p>
+      </div>
+
+      <!-- Set 2 (duplicate for infinite loop) -->
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#10B981;">M</div>
+          <div class="rank-url">maisonroux.fr</div>
+          <span class="rank-badge google">🔍 Google #2</span>
+        </div>
+        <h4>Les 5 meilleurs thés blancs à essayer en 2026</h4>
+        <p>Notre sélection des thés blancs les plus subtils, du Pai Mu Tan au Yin Zhen…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#2563EB;">F</div>
+          <div class="rank-url">finovo.io</div>
+          <span class="rank-badge ai">🤖 ChatGPT 47×</span>
+        </div>
+        <h4>Comparatif des outils de gestion de trésorerie pour PME</h4>
+        <p>Un guide pratique pour choisir entre Pennylane, Agicap, Qonto et Finovo…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#D97706;">A</div>
+          <div class="rank-url">angarde.eco</div>
+          <span class="rank-badge google">🔍 Google #1</span>
+        </div>
+        <h4>Sneakers vegan : guide d'achat 2026</h4>
+        <p>Tout sur les matériaux, les marques de référence et les pièges à éviter…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#8B5CF6;">L</div>
+          <div class="rank-url">lebrun.studio</div>
+          <span class="rank-badge ai">🤖 Perplexity 23×</span>
+        </div>
+        <h4>Indie hacker : comment lancer un SaaS rentable en 90 jours</h4>
+        <p>Méthodologie testée sur 4 lancements, métriques réelles et erreurs…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#EF4444;">N</div>
+          <div class="rank-url">noma-paris.fr</div>
+          <span class="rank-badge google">🔍 Google #3</span>
+        </div>
+        <h4>Les meilleurs restaurants végétariens à Paris en 2026</h4>
+        <p>Notre top 12 sélectionné par des critiques gastronomiques locaux…</p>
+      </div>
+      <div class="rank-card">
+        <div class="rank-head">
+          <div class="favicon" style="background:#0EA5E9;">B</div>
+          <div class="rank-url">brisebois.co</div>
+          <span class="rank-badge ai">🤖 Claude 31×</span>
+        </div>
+        <h4>Mobilier en bois français : les ateliers à connaître</h4>
+        <p>Une cartographie des artisans-ébénistes qui réinventent l'artisanat…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTEGRATIONS
+     ============================================================ -->
+<section class="section-bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Intégrations</span>
+      <h2>Ça marche avec ton site actuel.</h2>
+      <p>Un plugin, un clic, on s'occupe du reste.</p>
+    </div>
+
+    <div class="integ-grid reveal">
+      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">WordPress</span></div>
+      <div class="integ-card"><div class="integ-icon">S</div><span class="integ-name">Shopify</span></div>
+      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">Webflow</span></div>
+      <div class="integ-card"><div class="integ-icon">W</div><span class="integ-name">Wix</span></div>
+      <div class="integ-card"><div class="integ-icon">N</div><span class="integ-name">Notion</span></div>
+      <div class="integ-card"><div class="integ-icon">H</div><span class="integ-name">HubSpot</span></div>
+      <div class="integ-card"><div class="integ-icon">G</div><span class="integ-name">Ghost</span></div>
+      <div class="integ-card"><div class="integ-icon">N</div><span class="integ-name">Next.js</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPARISON
+     ============================================================ -->
+<section id="tarifs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Comparer</span>
+      <h2>Pourquoi pas une agence à 5 000 €/mois ?</h2>
+      <p>Les agences ne font pas encore de GEO. Les outils DIY te donnent juste des mots-clés. Voxa fait tout.</p>
+    </div>
+
+    <div class="compare-card reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th class="col-voxa">Voxa</th>
+            <th>Agence</th>
+            <th>DIY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Optimise pour ChatGPT &amp; LLMs</td>
+            <td class="col-voxa"><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+          </tr>
+          <tr>
+            <td>Publication automatique quotidienne</td>
+            <td class="col-voxa"><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+          </tr>
+          <tr>
+            <td>Contenu dans ta voix de marque</td>
+            <td class="col-voxa"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+          </tr>
+          <tr>
+            <td>Tracking des mentions IA</td>
+            <td class="col-voxa"><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+          </tr>
+          <tr>
+            <td>Prix mensuel</td>
+            <td class="col-voxa"><strong>49 €</strong></td>
+            <td>5 000 €+</td>
+            <td>∞ temps</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section-bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">Témoignages</span>
+      <h2>Ils remontent déjà dans les IA.</h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <blockquote>"Au bout de 3 semaines, ChatGPT a commencé à citer notre boutique quand on lui demandait des conseils thé. On a doublé le CA en 2 mois."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">CR</div>
+          <div>
+            <div class="testi-name">Clémence Roux</div>
+            <div class="testi-role">Fondatrice, Maison Roux</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <blockquote>"On payait 4K/mois une agence SEO qui ne comprenait pas le GEO. Voxa fait les deux pour 10× moins. On a coupé l'agence."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">TB</div>
+          <div>
+            <div class="testi-name">Thomas Béranger</div>
+            <div class="testi-role">CMO, Finovo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <blockquote>"Je suis solo founder. Voxa publie un article par jour pendant que je code. Premier lead qualifié venu de Perplexity au bout de 17 jours."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">ML</div>
+          <div>
+            <div class="testi-name">Mehdi Lebrun</div>
+            <div class="testi-role">Indie Hacker</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">FAQ</span>
+      <h2>Les questions qui reviennent.</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">C'est quoi, le GEO exactement ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Le GEO (Generative Engine Optimization) est l'art d'optimiser ton contenu pour qu'il soit cité, résumé et recommandé par les IA génératives — ChatGPT, Perplexity, Claude, Gemini. Au lieu d'optimiser pour le clic Google, tu optimises pour la recommandation IA. Voxa structure tes pages en paragraphes denses, ajoute des FAQ sémantiques, des données chiffrées et s'assure que ton site est correctement crawlable par GPTBot, ClaudeBot et PerplexityBot.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que ça remplace vraiment le SEO Google ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Non, et c'est exactement ça l'idée : Voxa fait les deux. Chaque article est optimisé pour Google (titres, mots-clés, structure SERP) ET pour les LLMs (paragraphes citables, données structurées, signaux de confiance). Tu n'as pas à choisir — tu remontes dans les deux univers en même temps.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Combien d'articles par mois ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Au plan de base : un article publié par jour, soit ~30/mois. Tu valides chaque sujet en un clic depuis ton dashboard, ou tu actives l'autopilote total. Les plans supérieurs permettent jusqu'à 3 articles/jour avec des piliers de contenu plus longs (guides, comparatifs).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que ChatGPT va vraiment parler de ma marque ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Pas le premier jour, soyons honnêtes. Les LLMs mettent 2 à 6 semaines pour intégrer un nouveau site dans leurs réponses (selon ton volume publié, ton autorité de domaine et ta niche). Voxa accélère ce processus en publiant régulièrement, en signalant ton contenu aux crawlers IA et en le rendant maximalement citable. La plupart de nos clients voient leurs premières citations IA entre la semaine 3 et la semaine 8.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Je suis sur Shopify / WordPress, ça marche ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Oui, et aussi sur Webflow, Wix, Ghost, HubSpot, Notion et Next.js. Notre plugin officiel s'installe en deux minutes : une clé API à coller, on s'occupe de la publication, du sitemap, du ping aux moteurs et du tracking. Sur les CMS personnalisés, on a une API REST simple à brancher.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Quelle garantie si ça ne marche pas ?<span class="faq-toggle" aria-hidden="true">+</span></div>
+        <div class="faq-a">Garantie de remboursement intégral pendant les 30 premiers jours, sans condition. Si après 90 jours d'utilisation tu n'as pas vu de progression mesurable (clics Google, mentions IA, ou trafic), on te rembourse à 100 %. On a la confiance parce qu'on a les données — la grande majorité de nos comptes voit du mouvement bien avant 90 jours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section id="cta" class="cta-band-section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Tes concurrents sont déjà dans ChatGPT.</h2>
+      <p>Pas toi. Enfin, pas encore. Voxa s'installe en 3 minutes et ça change demain.</p>
+      <a href="#" class="btn btn-dark">Commencer gratuitement →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg viewBox="0 0 100 100" fill="none">
+            <rect x="20" y="30" width="60" height="50" rx="14" fill="#2563EB" stroke="#0A0A0A" stroke-width="3"/>
+            <rect x="30" y="42" width="40" height="26" rx="6" fill="#0A0A0A"/>
+            <circle cx="42" cy="55" r="3.5" fill="#FFFFFF"/>
+            <circle cx="58" cy="55" r="3.5" fill="#FFFFFF"/>
+            <line x1="50" y1="22" x2="50" y2="30" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="50" cy="18" r="4" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/>
+          </svg>
+          Voxa
+        </div>
+        <p class="footer-tagline">Sois la marque que l'IA recommande.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#">Tarifs</a></li>
+          <li><a href="#">LLM GEO</a></li>
+          <li><a href="#">Plugin WordPress</a></li>
+          <li><a href="#">Plugin Shopify</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Guide GEO</a></li>
+          <li><a href="#">Études de cas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Conditions</a></li>
+          <li><a href="#">Vie privée</a></li>
+          <li><a href="#">Remboursement</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Voxa. Tous droits réservés.</span>
+      <span>Fait avec ♥ à Paris</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
